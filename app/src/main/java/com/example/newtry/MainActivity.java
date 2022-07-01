@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
     TextView nameTxtView;
     TextView addTxtView;
     ListView myLv;
+
+    Random rnd=new Random();
+    int index=rnd.nextInt((9-0)+1)+0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,20 +105,12 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(s);
             try {
                 JSONArray jsonArray=new JSONArray(s);
-//                for(int i=0;i<jsonArray.length();i++){
-//                    JSONObject jsonObject=jsonArray.getJSONObject(i);
-//                    Log.e("jsonNamess",jsonObject.getString("name"));
-//                }
-
-                JSONObject myobj=jsonArray.getJSONObject(0);
+                JSONObject myobj=jsonArray.getJSONObject(index);
                 nameTxtView.setText(myobj.getString("name"));
 
                 JSONObject addObj= myobj.getJSONObject("address");
-//                Log.e("my adddd",addObj.toString());
-//                Log.e("my street",addObj.getString("street"));
 
                 addTxtView.setText(addObj.getString("street")+","+addObj.getString("suite")+","+addObj.getString("city")+","+addObj.getString("zipcode"));
-
 
 
                 List<String> myAlbums = new ArrayList<String>();
@@ -123,10 +119,9 @@ public class MainActivity extends AppCompatActivity {
                 JSONArray albjsonArray=new JSONArray(albumsResult);
                 for (int i=0;i<albjsonArray.length();i++){
                     JSONObject albObj=albjsonArray.getJSONObject(i);
-                    if(Integer.parseInt(albObj.getString("userId"))==1){
+                    if(Integer.parseInt(albObj.getString("userId"))==index+1){
                         myAlbums.add(albObj.getString("title"));
                         myMap.put(albObj.getString("title"),Integer.parseInt(albObj.getString("id")));
-//                        Log.e("myListt", String.valueOf(myAlbums));
                     }
                 }
 
