@@ -1,6 +1,8 @@
 package com.example.newtry;
 
-public class photoObj {
+import java.io.Serializable;
+
+public class photoObj implements Serializable {
     private String title;
     private String url;
 

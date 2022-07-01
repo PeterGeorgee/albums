@@ -200,6 +200,13 @@ public class albumActivity extends AppCompatActivity {
             Log.e("i'm here",myphotos.get(i).getUrl());
             Picasso.get().load(photosListFiltered.get(i).getUrl()).into(imageView);
 
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(albumActivity.this,image.class).putExtra("pho",photosListFiltered.get(i)));
+                }
+            });
+
 
             return view;
         }
