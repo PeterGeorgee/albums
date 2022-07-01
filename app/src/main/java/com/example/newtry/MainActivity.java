@@ -134,9 +134,14 @@ public class MainActivity extends AppCompatActivity {
 //                        Toast.makeText(MainActivity.this,(String)myMap.get(adapterView.getAdapter().getItem(i)),Toast.LENGTH_SHORT).show();
 //                        Log.e("indexxx", String.valueOf(myMap.get(adapterView.getAdapter().getItem(i))));
                         String albID=String.valueOf(myMap.get(adapterView.getAdapter().getItem(i)));
+                        String albTitle=myAlbums.get(i);
+                        Log.e("titleee",albTitle);
 //                        Log.e("my idddd",albID);
                         Intent intent=new Intent(MainActivity.this,albumActivity.class);
-                        intent.putExtra("myID",albID);
+                        Bundle extras=new Bundle();
+                        extras.putString("myID",albID);
+                        extras.putString("albumTitle",albTitle);
+                        intent.putExtras(extras);
                         startActivity(intent);
                     }
                 });

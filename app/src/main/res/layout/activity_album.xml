@@ -4,8 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".albumActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/myTitle"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:gravity="center_horizontal"
+        android:layout_margin="10dp"
+        />
     <GridView
         android:id="@+id/myGrid"
         android:layout_width="match_parent"

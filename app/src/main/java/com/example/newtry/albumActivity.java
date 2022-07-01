@@ -20,6 +20,7 @@ import android.widget.Filterable;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
@@ -47,12 +48,15 @@ public class albumActivity extends AppCompatActivity {
     String result="";
 
     int AlbID;
+    String AlbTitle;
 
     List<String> photosURLS=new ArrayList<String>();
 
     List<photoObj> myphotos=new ArrayList<photoObj>();
 
     CustomAdapter adapter;
+
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +65,17 @@ public class albumActivity extends AppCompatActivity {
         Intent intent=getIntent();
         AlbID=Integer.parseInt(intent.getStringExtra("myID"));
 
+        Bundle extras=getIntent().getExtras();
+        AlbID= Integer.parseInt(extras.getString("myID"));
+        AlbTitle=extras.getString("albumTitle");
 
+
+        textView=findViewById(R.id.myTitle);
         gridView=findViewById(R.id.myGrid);
 
+        textView.setText(AlbTitle);
 
         new getJson().execute();
-
     }
 
     class getJson extends AsyncTask<Void,Void,String>{
