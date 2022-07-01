@@ -91,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
                     albBuilder.append(albLine);
                 }
                 albumsResult= albBuilder.toString();
-//                Log.e("My alb result",albBuilder.toString());
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -131,12 +130,8 @@ public class MainActivity extends AppCompatActivity {
                 myLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                        Toast.makeText(MainActivity.this,(String)myMap.get(adapterView.getAdapter().getItem(i)),Toast.LENGTH_SHORT).show();
-//                        Log.e("indexxx", String.valueOf(myMap.get(adapterView.getAdapter().getItem(i))));
                         String albID=String.valueOf(myMap.get(adapterView.getAdapter().getItem(i)));
                         String albTitle=myAlbums.get(i);
-                        Log.e("titleee",albTitle);
-//                        Log.e("my idddd",albID);
                         Intent intent=new Intent(MainActivity.this,albumActivity.class);
                         Bundle extras=new Bundle();
                         extras.putString("myID",albID);

@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -118,12 +117,9 @@ public class albumActivity extends AppCompatActivity {
                     if(Integer.parseInt(jsonObject.getString("albumId"))==AlbID){
                         photoObj photo=new photoObj(jsonObject.getString("title"),jsonObject.getString("url"));
                         myphotos.add(photo);
-//                        photosURLS.add(jsonObject.getString("url"));
                     }
                 }
-                Log.e("my urls", String.valueOf(myphotos.get(1).getUrl()));
 
-//                ArrayAdapter adapter=new ArrayAdapter(albumActivity.this, android.R.layout.simple_list_item_1,photosURLS);
                 adapter=new CustomAdapter(albumActivity.this,myphotos);
                 gridView.setAdapter(adapter);
             } catch (JSONException e) {
@@ -206,7 +202,6 @@ public class albumActivity extends AppCompatActivity {
 
             ImageView imageView=view.findViewById(R.id.imgView);
 
-            Log.e("i'm here",myphotos.get(i).getUrl());
             Picasso.get().load(photosListFiltered.get(i).getUrl()).into(imageView);
 
             view.setOnClickListener(new View.OnClickListener() {
